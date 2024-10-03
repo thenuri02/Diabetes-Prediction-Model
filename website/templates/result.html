@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #87CEEB, #e0ffff);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.3em;
+            margin: 10px 0;
+        }
+        .result {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            width: 350px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #2e8b57; /* Forest Green */
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #1e633e; /* Darker Green */
+        }
+        .status-good {
+            color: rgb(5, 112, 5);
+            font-weight: bold;
+        }
+        .status-average {
+            color: rgb(100, 147, 5);
+            font-weight: bold;
+        }
+        .status-risk {
+            color: rgb(110, 4, 4);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diabetes Prediction Level</h1>
+    <div class="result">
+        <p>The predicted diabetes level is: <strong>{{ pred }}</strong></p>
+        <p>
+            {% if pred == 0 %}
+                <!-- Your health status is:  -->
+                <span class="status-good">Good</span>
+            {% elif pred == 1 %}
+                <!-- Your health status is:  -->
+                <span class="status-average">Average</span>
+            {% elif pred == 2 %}
+                <!-- Your health status is:  -->
+                <span class="status-risk">Risk</span>
+            {% else %}
+                Invalid prediction level.
+            {% endif %}
+        </p>
+    </div>
+    <button class="button" onclick="window.location.href='/';">Go Back</button>
+</body>
+</html>
